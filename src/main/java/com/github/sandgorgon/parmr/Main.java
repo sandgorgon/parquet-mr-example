@@ -110,7 +110,21 @@ public class Main extends Configured implements Tool {
         //AvroParquetOutputFormat.setSchema(job, avroSchema);
         //job.setOutputKeyClass(Void.class);
         //job.setOutputValueClass(GenericRecord.class);
-  
+
+        // Rough way of testing the projection side of things.
+        AvroParquetInputFormat.setRequestedProjection(job, Schema.parse(
+                "{\"namespace\": \"com.micron.pesoft.avrotest.avro\",\n" +
+                " \"type\": \"record\",\n" +
+                " \"name\": \"User\",\n" +
+                " \"fields\": [\n" +
+                "     {\"name\": \"name\", \"type\": \"string\"},\n" +
+                "     {\"name\": \"favorite_number\",  \"type\": [\"int\", \"null\"]}\n" +
+//                "     {\"name\": \"favorite_color\", \"type\": [\"string\", \"null\"]}\n" +
+                " ]\n" +
+                "}\n" +
+                ""
+        ));
+        
         // Do the deed!
         int completion = job.waitForCompletion(true) ? 0 : 1;
 

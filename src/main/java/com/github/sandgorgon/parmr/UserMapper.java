@@ -35,7 +35,15 @@ public class UserMapper extends Mapper<LongWritable, User, Text, Text> {
 
     @Override
     protected void map(LongWritable key, User value, Context context) throws IOException, InterruptedException { 
-        context.write(new Text(value.getName().toString()), new Text(value.getFavoriteColor().toString()));
+        Text retKey = new Text(value.getName().toString());
+        
+        Text retValue = new Text("no value");
+        
+        if(value.getFavoriteColor() != null) {
+            retValue = new Text(value.getFavoriteColor().toString());
+        }
+        
+        context.write(retKey, retValue);
     }
     
 }
