@@ -113,7 +113,7 @@ public class Main extends Configured implements Tool {
 
         // Rough way of testing the projection side of things.
         AvroParquetInputFormat.setRequestedProjection(job, Schema.parse(
-                "{\"namespace\": \"com.micron.pesoft.avrotest.avro\",\n" +
+                "{\"namespace\": \"com.github.sandgorgon.parmr.avro\",\n" +
                 " \"type\": \"record\",\n" +
                 " \"name\": \"User\",\n" +
                 " \"fields\": [\n" +
