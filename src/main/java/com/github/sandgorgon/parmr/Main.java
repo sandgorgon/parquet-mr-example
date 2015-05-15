@@ -33,8 +33,6 @@ import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 import parquet.avro.AvroParquetInputFormat;
 import parquet.avro.AvroSchemaConverter;
-import static parquet.filter2.predicate.FilterApi.eq;
-import static parquet.filter2.predicate.FilterApi.intColumn;
 import parquet.hadoop.Footer;
 import parquet.hadoop.ParquetFileReader;
 import parquet.schema.MessageType;
@@ -80,7 +78,8 @@ public class Main extends Configured implements Tool {
         // Set the Mapper
         
         // This doesn't seem to work yet(?)
-        AvroParquetInputFormat.setFilterPredicate(conf, eq(intColumn("favorite_number"), 2));
+        //AvroParquetInputFormat.setFilterPredicate(conf, eq(intColumn("favorite_number"), 2));
+        AvroParquetInputFormat.setUnboundRecordFilter(job, UserRecordFilter.class);
         
         AvroParquetInputFormat.addInputPath(job, new Path(args[0]));
         AvroParquetInputFormat.setAvroReadSchema(job, avroSchema);
