@@ -77,9 +77,10 @@ public class Main extends Configured implements Tool {
         
         // Set the Mapper
         
-        // This doesn't seem to work yet(?)
-        //AvroParquetInputFormat.setFilterPredicate(conf, eq(intColumn("favorite_number"), 2));
+        // This works for predicate pushdown on record assembly read.
         AvroParquetInputFormat.setUnboundRecordFilter(job, UserRecordFilter.class);
+        // But I don't know how to use the 2nd filter API, because I don't think it is just a matter of calling... ?!?
+        //AvroParquetInputFormat.setFilterPredicate(conf, eq(intColumn("favorite_number"), 2));
         
         AvroParquetInputFormat.addInputPath(job, new Path(args[0]));
         AvroParquetInputFormat.setAvroReadSchema(job, avroSchema);
