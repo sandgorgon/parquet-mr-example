@@ -75,8 +75,6 @@ public class Main extends Configured implements Tool {
         // Set the Mapper
         job.setMapperClass(UserMapper.class);
         
-        // Set the Mapper
-        
         // This works for predicate pushdown on record assembly read.
         AvroParquetInputFormat.setUnboundRecordFilter(job, UserRecordFilter.class);
         // But I don't know how to use the 2nd filter API, because I don't think it is just a matter of calling... ?!?
@@ -88,8 +86,6 @@ public class Main extends Configured implements Tool {
         job.setMapOutputKeyClass(Text.class);
         job.setMapOutputValueClass(Text.class);
 
-        
-        
         // If you needed to return an avro object from the mapper, refer to this...
         //job.setMapOutputValueClass(AvroValue.class);
         //AvroJob.setMapOutputValueSchema(job, avroSchema);
