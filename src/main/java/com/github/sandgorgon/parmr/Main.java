@@ -77,9 +77,7 @@ public class Main extends Configured implements Tool {
         
         // This works for predicate pushdown on record assembly read.
         AvroParquetInputFormat.setUnboundRecordFilter(job, UserRecordFilter.class);
-        // But I don't know how to use the 2nd filter API, because I don't think it is just a matter of calling... ?!?
-        //AvroParquetInputFormat.setFilterPredicate(conf, eq(intColumn("favorite_number"), 2));
-        
+
         AvroParquetInputFormat.addInputPath(job, new Path(args[0]));
         AvroParquetInputFormat.setAvroReadSchema(job, avroSchema);
         job.setInputFormatClass(AvroParquetInputFormat.class);
