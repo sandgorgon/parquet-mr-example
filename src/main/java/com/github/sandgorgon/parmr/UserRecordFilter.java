@@ -18,12 +18,12 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 package com.github.sandgorgon.parmr;
 
-import parquet.column.ColumnReader;
-import static parquet.filter.ColumnPredicates.equalTo;
-import static parquet.filter.ColumnRecordFilter.column;
-import static parquet.filter.NotRecordFilter.not;
-import parquet.filter.RecordFilter;
-import parquet.filter.UnboundRecordFilter;
+import org.apache.parquet.column.ColumnReader;
+import static org.apache.parquet.filter.ColumnPredicates.equalTo;
+import static org.apache.parquet.filter.ColumnRecordFilter.column;
+import static org.apache.parquet.filter.NotRecordFilter.not;
+import org.apache.parquet.filter.RecordFilter;
+import org.apache.parquet.filter.UnboundRecordFilter;
 
 /**
  *
